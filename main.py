@@ -10,9 +10,12 @@ load_dotenv()
 
 app = FastAPI()
 
+api_key = os.environ.get("api_key")
+print(api_key)
+
 client = InferenceClient(
     provider="hf-inference",
-    api_key=os.getenv("api_key"),
+    api_key=api_key,
 )
 
 class ImageRequest(BaseModel):
