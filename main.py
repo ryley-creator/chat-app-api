@@ -11,10 +11,9 @@ load_dotenv()
 app = FastAPI()
 
 api_key = os.environ.get("api_key")
-print(api_key)
 
 client = InferenceClient(
-    provider="hf-inference",
+    provider="fal-ai",
     api_key=api_key,
 )
 
@@ -25,7 +24,7 @@ class ImageRequest(BaseModel):
 def generate_image(req: ImageRequest):
     image = client.text_to_image(
         req.prompt,
-        model="stabilityai/stable-diffusion-xl-base-1.0",
+        model="Tongyi-MAI/Z-Image-Turbo",
         width=1024,
         height=1024,
     )
